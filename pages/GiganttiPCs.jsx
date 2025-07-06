@@ -93,28 +93,28 @@ export default function GiganttiPCs() {
                     <li key={i}>• {spec}</li>
                     ))}
                 </ul>
-<p className="mb-1" style={{
-  fontSize: '0.75rem',
-  fontWeight: '600',
-  borderLeft: '4px solid #007bff',
-  paddingLeft: '8px',
-  color: '#0056b3',
-  marginBottom: '0.3rem',
-}}>
-  CPU Model: {product.cpuPerformance?.name} <br />
-  (Single-thread: {product.cpuPerformance?.singlethread}, Multi-thread: {product.cpuPerformance?.multithread}, Value: {product.cpuPerformance?.valueScore?.toFixed(2)})
-</p>
+                <p className="mb-1" style={{
+                fontSize: '0.75rem',
+                fontWeight: '600',
+                borderLeft: '4px solid #007bff',
+                paddingLeft: '8px',
+                color: '#0056b3',
+                marginBottom: '0.3rem',
+                }}>
+                CPU Model: {product.cpuPerformance?.name} <br />
+                (Single-thread: {product.cpuPerformance?.singlethread}, Multi-thread: {product.cpuPerformance?.multithread}, Value: {product.cpuPerformance?.valueScore?.toFixed(2)})
+                </p>
 
-<p style={{
-  fontSize: '0.75rem',
-  fontWeight: '600',
-  borderLeft: '4px solid #007bff',
-  paddingLeft: '8px',
-  color: '#0056b3',
-}}>
-  GPU Model: {product.gpuPerformance?.name} <br />
-  (Benchmark: {product.gpuPerformance?.benchmark}, Value: {product.gpuPerformance?.valueScore?.toFixed(2)})
-</p>
+                <p style={{
+                fontSize: '0.75rem',
+                fontWeight: '600',
+                borderLeft: '4px solid #007bff',
+                paddingLeft: '8px',
+                color: '#0056b3',
+                }}>
+                GPU Model: {product.gpuPerformance?.name} <br />
+                (Benchmark: {product.gpuPerformance?.benchmark}, Value: {product.gpuPerformance?.valueScore?.toFixed(2)})
+                </p>
                 </div>
                 <div className="card-footer d-flex justify-content-center align-items-center" style={{ padding: '0.4rem 0' }}>
                     <span
