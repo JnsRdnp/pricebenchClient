@@ -6,9 +6,15 @@ export default function GiganttiPCs() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+  const apitoken = import.meta.env.VITE_ACCESS_TOKEN
 
   useEffect(() => {
-    fetch(`${apiUrl}/api/gigantti`)
+    fetch(`${apiUrl}/api/gigantti`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${apitoken}`
+      }
+    })
       .then((res) => {
         if (!res.ok) throw new Error('Failed to fetch products');
         return res.json();

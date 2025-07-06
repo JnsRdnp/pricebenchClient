@@ -10,6 +10,7 @@ export default function ValuePage() {
   const [selectedCpuId, setSelectedCpuId] = useState(null);
   const [selectedGpuId, setSelectedGpuId] = useState(null);
   const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+  const apitoken = import.meta.env.VITE_ACCESS_TOKEN
 
   const fetchValues = async () => {
     if (!cpuName.trim() && !gpuName.trim()) return;
@@ -20,11 +21,16 @@ export default function ValuePage() {
 
       if (cpuName.trim()) {
         fetches.push(
-        fetch(`${apiUrl}/api/price/cpu?name=${encodeURIComponent(cpuName)}&euro=${euro}`)
-            .then(res => {
-              if (!res.ok) throw new Error('CPU fetch failed');
-              return res.json();
+            fetch(`${apiUrl}/api/price/cpu?name=${encodeURIComponent(cpuName)}&euro=${euro}`, {
+              method: 'GET',
+              headers: {
+                'Authorization': `Bearer ${apitoken}`
+              }
             })
+              .then(res => {
+                if (!res.ok) throw new Error('CPU fetch failed');
+                return res.json();
+              })
             .then(data => {
               setCpuResults(data);
               if (!data.some(cpu => cpu.id === selectedCpuId)) {
@@ -39,7 +45,12 @@ export default function ValuePage() {
 
       if (gpuName.trim()) {
         fetches.push(
-          fetch(`${apiUrl}/api/price/gpu?name=${encodeURIComponent(gpuName)}&euro=${euro}`)
+          fetch(`${apiUrl}/api/price/gpu?name=${encodeURIComponent(gpuName)}&euro=${euro}`, {
+            method: 'GET',
+            headers: {
+              'Authorization': `Bearer ${apitoken}`
+            }
+          })
             .then(res => {
               if (!res.ok) throw new Error('GPU fetch failed');
               return res.json();

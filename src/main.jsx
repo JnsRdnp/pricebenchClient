@@ -5,7 +5,6 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import './index.css'; // ← your custom styles loaded last (safe)
 import App from './App.jsx'
 
-
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
