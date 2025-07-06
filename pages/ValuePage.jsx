@@ -26,8 +26,14 @@ export default function ValuePage() {
               return res.json();
             })
             .then(data => {
-              setCpuResults(data);
-              setSelectedCpuId(data.length === 1 ? data[0].id : null);
+            setCpuResults(data);
+            if (data.some(cpu => cpu.id === selectedCpuId)) {
+                // keep the same selection
+            } else if (data.length === 1) {
+                setSelectedCpuId(data[0].id);
+            } else {
+                setSelectedCpuId(null);
+            }
             })
         );
       } else {
@@ -42,10 +48,16 @@ export default function ValuePage() {
               if (!res.ok) throw new Error('GPU fetch failed');
               return res.json();
             })
-            .then(data => {
-              setGpuResults(data);
-              setSelectedGpuId(data.length === 1 ? data[0].id : null);
-            })
+          .then(data => {
+            setGpuResults(data);
+            if (data.some(gpu => gpu.id === selectedGpuId)) {
+              // Keep existing selection
+            } else if (data.length === 1) {
+              setSelectedGpuId(data[0].id);
+            } else {
+              setSelectedGpuId(null);
+            }
+          })
         );
       } else {
         setGpuResults([]);
@@ -75,13 +87,26 @@ export default function ValuePage() {
     (selectedCpu?.valueScore ?? 0) + (selectedGpu?.valueScore ?? 0);
 
   return (
-    <div className="container my-3" style={{ maxWidth: 900 }}>
+    <div
+      className="container my-3"
+      style={{
+        maxWidth: 900,
+        minWidth: 600,  // set a minimum width so container doesn't shrink
+        width: '100%',
+        boxSizing: 'border-box',
+      }}
+    >
       <h2 className="mb-3">CPU & GPU Price Value</h2>
 
       {/* Inputs in a row */}
-      <div className="d-flex gap-2 align-items-end flex-wrap" style={{ marginBottom: '0.5rem' }}>
+      <div
+        className="d-flex gap-2 align-items-end flex-wrap"
+        style={{ marginBottom: '0.5rem' }}
+      >
         <div style={{ flex: '1 1 30%', minWidth: 160 }}>
-          <label htmlFor="cpuName" className="form-label small mb-0">CPU Name</label>
+          <label htmlFor="cpuName" className="form-label small mb-0">
+            CPU Name
+          </label>
           <input
             id="cpuName"
             type="text"
@@ -95,7 +120,9 @@ export default function ValuePage() {
         </div>
 
         <div style={{ flex: '1 1 30%', minWidth: 160 }}>
-          <label htmlFor="gpuName" className="form-label small mb-0">GPU Name</label>
+          <label htmlFor="gpuName" className="form-label small mb-0">
+            GPU Name
+          </label>
           <input
             id="gpuName"
             type="text"
@@ -109,7 +136,9 @@ export default function ValuePage() {
         </div>
 
         <div style={{ flex: '0 0 100px' }}>
-          <label htmlFor="euro" className="form-label small mb-0">Euro</label>
+          <label htmlFor="euro" className="form-label small mb-0">
+            Euro
+          </label>
           <input
             id="euro"
             type="number"
@@ -126,11 +155,15 @@ export default function ValuePage() {
 
       {!loading && (
         <>
-          {/* CPU Results scrollable container */}
-                      <div className="mt-3 p-2 border rounded bg-light text-center">
+          <div
+            className="mt-3 p-2 border rounded bg-light text-center"
+            style={{ minWidth: '100%', boxSizing: 'border-box' }}
+          >
             <h5 className="mb-1">Total Value Score:</h5>
             <p className="fs-5 fw-bold mb-0">{totalValueScore}</p>
           </div>
+
+          {/* CPU Results scrollable container */}
           <div
             style={{
               maxHeight: '40vh',
@@ -141,6 +174,8 @@ export default function ValuePage() {
               borderRadius: 4,
               padding: '0.5rem',
               backgroundColor: '#f9f9f9',
+              minWidth: '100%',
+              boxSizing: 'border-box',
             }}
           >
             <h4 className="mb-2">CPU Results</h4>
@@ -175,7 +210,6 @@ export default function ValuePage() {
           </div>
 
           {/* GPU Results scrollable container */}
-
           <div
             style={{
               maxHeight: '40vh',
@@ -186,6 +220,8 @@ export default function ValuePage() {
               borderRadius: 4,
               padding: '0.5rem',
               backgroundColor: '#f9f9f9',
+              minWidth: '100%',
+              boxSizing: 'border-box',
             }}
           >
             <h4 className="mb-2">GPU Results</h4>
@@ -217,8 +253,6 @@ export default function ValuePage() {
               </div>
             )}
           </div>
-
-
         </>
       )}
     </div>
