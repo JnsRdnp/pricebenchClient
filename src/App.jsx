@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 import GiganttiPCs from '../pages/GiganttiPCs';
 import ValuePage from '../pages/ValuePage';
+import priceBenchLogo from '../src/assets/pricebench.svg';
 
 export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -26,6 +27,7 @@ export default function App() {
             transition: 'transform 0.3s ease',
           }}
         >
+
           <h5
             style={{
               textTransform: 'uppercase',
@@ -34,7 +36,8 @@ export default function App() {
               userSelect: 'none',
             }}
           >
-            Menu
+            <img src={priceBenchLogo} alt="PriceBench Logo" style={{ width: 40, height: 40, marginRight: 10 }} />
+            PriceBench
           </h5>
           <ul className="nav nav-pills flex-column gap-2">
             <li className="nav-item">
@@ -70,7 +73,7 @@ export default function App() {
             </li>
           </ul>
           <div style={{ marginTop: 'auto', fontSize: '0.8rem', opacity: 0.6 }}>
-            &copy; 2025 Your Company
+            &copy; 2025 JR
           </div>
         </nav>
 

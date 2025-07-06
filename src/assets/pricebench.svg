@@ -1,0 +1,81 @@
+<svg width="140" height="140" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Price Bench Logo with CPU chip and stylized lightning bolt">
+  <style>
+    
+      .cpu-body {
+        fill: #222;
+        stroke: #555;
+        stroke-width: 3;
+        rx: 16;
+        ry: 16;
+      }
+      .pin {
+        fill: #555;
+        stroke: #333;
+        stroke-width: 1;
+        rx: 2;
+        ry: 2;
+      }
+      .bolt {
+        fill: url(#boltGradient);
+        filter: drop-shadow(0 0 6px #ff5722);
+        transform-origin: 70px 80px;
+      }
+      .euro {
+        font-weight: 700;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 44px;
+        user-select: none;
+        fill: url(#euroGradient);
+        filter: drop-shadow(0 0 6px #4caf50);
+      }
+    
+  </style>
+
+  <!-- CPU chip body -->
+  <rect class="cpu-body" x="10" y="10" width="120" height="120" rx="16" ry="16"></rect>
+
+  <!-- CPU pins -->
+  <rect class="pin" x="22" y="4" width="8" height="12"></rect>
+  <rect class="pin" x="50" y="4" width="8" height="12"></rect>
+  <rect class="pin" x="78" y="4" width="8" height="12"></rect>
+  <rect class="pin" x="106" y="4" width="8" height="12"></rect>
+  <rect class="pin" x="22" y="124" width="8" height="12"></rect>
+  <rect class="pin" x="50" y="124" width="8" height="12"></rect>
+  <rect class="pin" x="78" y="124" width="8" height="12"></rect>
+  <rect class="pin" x="106" y="124" width="8" height="12"></rect>
+  <rect class="pin" x="4" y="22" width="12" height="8"></rect>
+  <rect class="pin" x="4" y="50" width="12" height="8"></rect>
+  <rect class="pin" x="4" y="78" width="12" height="8"></rect>
+  <rect class="pin" x="4" y="106" width="12" height="8"></rect>
+  <rect class="pin" x="124" y="22" width="12" height="8"></rect>
+  <rect class="pin" x="124" y="50" width="12" height="8"></rect>
+  <rect class="pin" x="124" y="78" width="12" height="8"></rect>
+  <rect class="pin" x="124" y="106" width="12" height="8"></rect>
+
+  <!-- Two glowing Euro signs next to each other -->
+  <defs>
+    <linearGradient id="boltGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff7043"></stop>
+      <stop offset="100%" stop-color="#ff1744"></stop>
+    </linearGradient>
+    <linearGradient id="euroGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#81c784"></stop>
+      <stop offset="100%" stop-color="#388e3c"></stop>
+    </linearGradient>
+  </defs>
+
+  <text class="euro" x="45" y="80" text-anchor="middle" dominant-baseline="middle">€</text>
+  <text class="euro" x="95" y="80" text-anchor="middle" dominant-baseline="middle">€</text>
+
+  <!-- Flipped lightning bolt -->
+  <path class="bolt" d="
+      M70 30
+      L60 65
+      L72 65
+      L55 110
+      L85 70
+      L75 70
+      L90 30
+      Z
+    "></path>
+</svg>
