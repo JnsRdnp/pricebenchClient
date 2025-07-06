@@ -293,6 +293,25 @@ export default function ValuePage() {
           </div>
         </div>
       )}
+            <footer
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          height: '2.5rem',
+          borderTop: '1px solid #ddd',
+          backgroundColor: '#fafafa',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontSize: '0.85rem',
+          color: '#666',
+          fontStyle: 'italic',
+        }}
+      >
+        Source: <a href="passmark.com" target="_blank" rel="noopener noreferrer" style={{ color: '#3b49df', textDecoration: 'none' }}> passmark.com</a>
+      </footer>
     </div>
   );
 }
