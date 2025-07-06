@@ -52,8 +52,31 @@ export default function GiganttiPCs() {
       </h1>
 
       <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-        {products.map((product) => (
-          <div className="col" key={product.id}>
+        {products.map((product, index) => (
+          <div className="col" key={product.id} style={{ position: 'relative' }}>
+            {/* Ranking badge */}
+            <div
+              style={{
+                position: 'absolute',
+                top: '8px',
+                left: '8px',
+                backgroundColor: index === 0 ? '#ffd700' : '#007bff',
+                color: index === 0 ? '#333' : '#fff',
+                padding: '4px 8px',
+                borderRadius: '12px',
+                fontWeight: '700',
+                fontSize: '0.85rem',
+                display: 'flex',
+                alignItems: 'center',
+                boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
+                userSelect: 'none',
+                zIndex: 10,
+              }}
+              title={`Rank #${index + 1}`}
+            >
+              #{index + 1} {index === 0 && <span style={{ marginLeft: '4px' }}>👑</span>}
+            </div>
+
             <a
               href={product.link}
               target="_blank"
@@ -77,10 +100,10 @@ export default function GiganttiPCs() {
                 }}
               >
                 <img
-                src={product.imageUrl}
-                className="card-img-top img-fluid"
-                alt={product.name}
-                style={{ objectFit: 'contain', maxHeight: '140px', maxWidth: '100%', backgroundColor: '#f0f0f0' }}
+                  src={product.imageUrl}
+                  className="card-img-top img-fluid"
+                  alt={product.name}
+                  style={{ objectFit: 'contain', maxHeight: '140px', maxWidth: '100%', backgroundColor: '#f0f0f0' }}
                 />
                 <div className="card-body p-3">
                   <h5 className="card-title" style={{ fontSize: '1rem', marginBottom: '0.3rem' }}>
