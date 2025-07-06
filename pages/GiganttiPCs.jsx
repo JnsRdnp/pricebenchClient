@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
+import Spinner from '../components/Spinner';
 
 export default function GiganttiPCs() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/gigantti')
+    fetch(`${apiUrl}/api/gigantti`)
       .then((res) => {
         if (!res.ok) throw new Error('Failed to fetch products');
         return res.json();
@@ -21,7 +23,7 @@ export default function GiganttiPCs() {
       });
   }, []);
 
-  if (loading) return <p>Loading products...</p>;
+  if (loading) return <Spinner />;
   if (error) return <p className="text-danger">Error: {error}</p>;
 
   return (

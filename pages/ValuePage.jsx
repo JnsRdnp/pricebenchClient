@@ -9,6 +9,7 @@ export default function ValuePage() {
   const [loading, setLoading] = useState(false);
   const [selectedCpuId, setSelectedCpuId] = useState(null);
   const [selectedGpuId, setSelectedGpuId] = useState(null);
+  const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
   const fetchValues = async () => {
     if (!cpuName.trim() && !gpuName.trim()) return;
@@ -19,7 +20,7 @@ export default function ValuePage() {
 
       if (cpuName.trim()) {
         fetches.push(
-          fetch(`http://localhost:3000/api/price/cpu?name=${encodeURIComponent(cpuName)}&euro=${euro}`)
+        fetch(`${apiUrl}/api/price/cpu?name=${encodeURIComponent(cpuName)}&euro=${euro}`)
             .then(res => {
               if (!res.ok) throw new Error('CPU fetch failed');
               return res.json();
@@ -38,7 +39,7 @@ export default function ValuePage() {
 
       if (gpuName.trim()) {
         fetches.push(
-          fetch(`http://localhost:3000/api/price/gpu?name=${encodeURIComponent(gpuName)}&euro=${euro}`)
+          fetch(`${apiUrl}/api/price/gpu?name=${encodeURIComponent(gpuName)}&euro=${euro}`)
             .then(res => {
               if (!res.ok) throw new Error('GPU fetch failed');
               return res.json();
